@@ -6,6 +6,10 @@ import os
 
 app = Flask(__name__)
 
+# Create uploads folder if not exists
+if not os.path.exists("uploads"):
+    os.makedirs("uploads")
+
 # Load trained model
 model = load_model("fabric_model.keras")
 
@@ -44,5 +48,7 @@ def predict():
 
     return "No file uploaded"
 
+
+# 🔥 IMPORTANT: KEEP THIS AT THE END
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host="0.0.0.0", port=10000)
